@@ -1,15 +1,20 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
-from checker import check_account
 from pathlib import Path
+from checker import check_account
 
 app = FastAPI()
 
-# إرسال صفحة HTML من frontend
+@app.on_event("startup")
+def startup_event():
+    print("✅ FastAPI application has started!")
+
+# صفحة البداية تعرض الواجهة الاحترافية
 @app.get("/")
 def home():
     return FileResponse(Path(__file__).parent.parent / "frontend" / "index.html")
 
+# endpoint للتحقق من حسابات NordVPN
 @app.post("/check")
 async def check(file: UploadFile = File(...)):
     content = await file.read()
@@ -22,3 +27,4 @@ async def check(file: UploadFile = File(...)):
         status = check_account(username, password)
         results.append(f"{username}:{password} - {'Valid' if status else 'Invalid'}")
     return {"results": results}
+
