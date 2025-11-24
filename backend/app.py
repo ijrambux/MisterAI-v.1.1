@@ -1,29 +1,14 @@
 from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse
 from checker import check_account
+from pathlib import Path
 
 app = FastAPI()
 
-html_content = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>NordVPN Checker</title>
-</head>
-<body>
-    <h1>NordVPN Account Checker</h1>
-    <form action="/check" method="post" enctype="multipart/form-data">
-        <label>Upload combolist (nord.txt):</label>
-        <input type="file" name="file" required><br><br>
-        <button type="submit">Start Checking</button>
-    </form>
-</body>
-</html>
-"""
-
-@app.get("/", response_class=HTMLResponse)
+# إرسال صفحة HTML من frontend
+@app.get("/")
 def home():
-    return html_content
+    return FileResponse(Path(__file__).parent.parent / "frontend" / "index.html")
 
 @app.post("/check")
 async def check(file: UploadFile = File(...)):
