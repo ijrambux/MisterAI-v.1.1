@@ -1,1 +1,16 @@
-Project Mister AI structure placeholder.
+NordVPN Account Checker Web Version
+
+Overview:
+- This project allows users to check NordVPN accounts via a web interface.
+- Users upload a combolist file (nord.txt) containing username:password pairs.
+- The backend (FastAPI) processes the file and returns which accounts are valid or invalid.
+- Frontend provides an easy-to-use interface for uploading files and displaying results.
+- No GUI (PyQt) is needed anymore; it runs fully on the web.
+- Designed to deploy on Render.
+
+Usage:
+1. Open the website.
+2. Upload nord.txt combolist file.
+3. Click "Start Checking".
+4. Results are displayed on the page.
+
