@@ -2,12 +2,13 @@ services:
   - type: web
     name: MisterAI
     env: python
-    region: oregon  # يمكنك تغييره حسب المنطقة التي تريد
-    plan: free      # أو standard حسب اختيارك
+    region: oregon
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     pythonVersion: 3.13.4
     autoDeploy: true
     envVars: []
     healthCheckPath: /
-    rootDirectory: /
+    rootDirectory: backend
+
