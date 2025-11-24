@@ -1,1 +1,47 @@
-<html><body><h1>Mister AI Web UI</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NordVPN Account Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        h1 { color: #2c3e50; }
+        input[type="file"] { margin: 20px 0; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        pre { text-align: left; max-width: 600px; margin: 20px auto; background: #f4f4f4; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>NordVPN Account Checker</h1>
+    <form id="checkerForm">
+        <input type="file" name="file" id="fileInput" required><br>
+        <button type="submit">Start Checking</button>
+    </form>
+    <pre id="results"></pre>
+
+    <script>
+        const form = document.getElementById('checkerForm');
+        const results = document.getElementById('results');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            results.textContent = 'Checking accounts...';
+
+            const response = await fetch('/check', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            results.textContent = data.results.join('\n');
+        });
+    </script>
+</body>
+</html>
+
