@@ -1,41 +1,38 @@
-# Nordvpn Account Checker
-## Linux Distributions only
+# NordVPN Account Checker – Web Version
+## Runs on Linux Distributions and Web (Render Compatible)
 
-### How to Run:
+---
 
-https://github.com/g3th/Nordvpn-Account-Checker/assets/74467654/89d0a0c1-45e2-4d93-82c0-83067321fab2
+## Overview
 
+This project allows users to check NordVPN accounts via a **web interface**.  
+Users upload a combolist file (`nord.txt`) containing `username:password` pairs.  
+The backend (FastAPI) processes the file and returns which accounts are valid or invalid.  
+Frontend provides an easy-to-use interface for uploading files and displaying results.  
 
-Pick or toggle an option from the menu, and start the checker when needed.
+**Key Points:**
+- Fully web-based – no GUI (PyQt) needed.
+- Works on Linux distributions and web servers like Render.
+- Designed for simplicity and easy deployment.
 
+---
 
-```Save Cookie``` and ```Headless Mode``` will be added in the near future.
+## Features
 
+- Upload `nord.txt` combolist from the web page.
+- Automatic checking of NordVPN accounts.
+- Results displayed immediately in the browser.
+- Headless mode and "Save Cookie" feature to be added in future updates.
 
-Don't forget to include a combolist, named 'nord.txt', in the program's main folder.
+---
 
+## Installation & Run Locally
 
-Run in terminal:
+1. **Install Python 3.13+**  
+2. **Clone the repository:**
 
-```python3 nordvpn.py```.
+```bash
+git clone https://github.com/yourusername/NordVPN-Web-Checker.git
+cd NordVPN-Web-Checker
 
-
-### How to Install
-
-
-To remove current google version (and subsequently downgrade):
-
-
-```sudo apt remove google-chrome-stable```
-
-
-The correct ```chromedriver``` version for the ```google-chrome-stable``` package version above is included.
-
-
-### Requirements
-
-
-Install requirements with:
-
-```pip install -r requirements.txt```
 
